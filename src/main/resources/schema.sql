@@ -1,0 +1,13 @@
+drop table if exists channel CASCADE;
+drop table if exists subscription CASCADE;
+drop table if exists webpush CASCADE;
+drop table if exists whatsapp CASCADE;
+drop sequence if exists hibernate_sequence;
+create sequence hibernate_sequence start with 1 increment by 1;
+create table channel (id bigint not null, name varchar(255), primary key (id));
+create table subscription (id bigint not null, user_id varchar(255), channel_id bigint, primary key (id));
+create table webpush (browser_id varchar(255), user_id varchar(255), id bigint not null, primary key (id));
+create table whatsapp (number varchar(255), user_id varchar(255), id bigint not null, primary key (id));
+alter table subscription add constraint FK8n56qx4ms3bxeiscdmtthtg41 foreign key (channel_id) references channel;
+alter table webpush add constraint FKkdg08xrcyjndn3u8h4g9vg9de foreign key (id) references channel;
+alter table whatsapp add constraint FK1rhxrwwtwswcw5t3xhbelktuc foreign key (id) references channel;
