@@ -1,26 +1,28 @@
 package guidev.factory.services;
 
-import guidev.factory.interfaces.Notifiable;
+import guidev.factory.enums.ChannelType;
+import guidev.factory.interfaces.NotifiableService;
+import guidev.factory.models.Channel;
+import guidev.factory.models.Webpush;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import static guidev.factory.enums.ChannelType.WEB_PUSH;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SendNotificationWebpush implements Notifiable {
-
-    private final FindWebpushService findWebpushService;
+public class SendNotificationWebpush implements NotifiableService {
 
     @Override
-    public void send(List<Long> channelIds, String message) {
+    public ChannelType getType() {
+        return WEB_PUSH;
+    }
 
-        val channelConfigs = findWebpushService.execute(channelIds);
-
-        channelConfigs.forEach(webpush -> log.info("Notification sent to webpush, user Id: {}, browserId : {}", webpush.getUserId(), webpush.getBrowserId()));
-
+    @Override
+    public void send(Channel channel, String message) {
+        Webpush webpush = (Webpush) channel;
+        log.info("Notification sent to webpush, user Id: {}, browserId : {}", webpush.getUserId(), webpush.getBrowserId());
     }
 }

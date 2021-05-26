@@ -1,46 +1,28 @@
 package guidev.factory.services;
 
-import guidev.factory.models.Channel;
-import guidev.factory.models.Subscription;
-import guidev.factory.utils.SendNotificationResolver;
+import guidev.factory.enums.ChannelType;
+import guidev.factory.interfaces.NotifiableService;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class SendNotificationService implements ApplicationRunner {
 
     private final FindSubscriptionService findSubscriptionService;
-    private final SendNotificationResolver notificationResolver;
+    private final Map<ChannelType, NotifiableService> notifiableMap;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
-
-        val subscriptionList = findSubscriptionService.execute();
-
-        val channelSubscriptions = subscriptionList.stream().collect(Collectors.groupingBy(Subscription::getChannelName));
-
-        channelSubscriptions
-                .forEach((channel, subscriptions) -> {
-
-                    val channelIds = subscriptions
-                            .stream()
-                            .map(Subscription::getChannel)
-                            .map(Channel::getId)
-                            .collect(Collectors.toList());
-
-                    val notificationService = notificationResolver.getNotificationService(channel);
-
-                    notificationService.send(channelIds, "my message");
-
-                    // save notification
-                });
-
+    public void run(ApplicationArguments args) {
+        findSubscriptionService.execute()
+            .forEach(subscription -> {
+                NotifiableService notificationService = notifiableMap.get(subscription.getChannelType());
+                notificationService.send(subscription.getChannel(), "my message");
+            });
     }
 
 }

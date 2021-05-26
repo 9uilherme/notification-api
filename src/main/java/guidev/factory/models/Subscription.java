@@ -1,5 +1,6 @@
 package guidev.factory.models;
 
+import guidev.factory.enums.ChannelType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,7 @@ public class Subscription {
     @ManyToOne
     private Channel channel;
 
-    public String getChannelName() {
-        return channel.getName();
+    public ChannelType getChannelType() {
+        return channel.getType();
     }
 }

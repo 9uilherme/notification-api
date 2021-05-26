@@ -4,7 +4,7 @@ drop table if exists webpush CASCADE;
 drop table if exists whatsapp CASCADE;
 drop sequence if exists hibernate_sequence;
 create sequence hibernate_sequence start with 1 increment by 1;
-create table channel (id bigint not null, name varchar(255), primary key (id));
+create table channel (id bigint not null, type varchar(255), primary key (id));
 create table subscription (id bigint not null, user_id varchar(255), channel_id bigint, primary key (id));
 create table webpush (browser_id varchar(255), user_id varchar(255), id bigint not null, primary key (id));
 create table whatsapp (number varchar(255), user_id varchar(255), id bigint not null, primary key (id));
