@@ -10,9 +10,11 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Webpush extends Channel {
+public class MicrosoftTeamsConfig extends ChannelConfig {
 
-    private String userId;
+    private String name;
 
-    private String browserId;
+    private String legalEntity;
+
+    private String webhook;
 }

@@ -20,12 +20,13 @@ public class Subscription {
     @GeneratedValue
     private Long id;
 
-    private String userId;
+    @ManyToOne
+    private Profile profile;
 
     @ManyToOne
-    private Channel channel;
+    private ChannelConfig channelConfig;
 
     public ChannelType getChannelType() {
-        return channel.getType();
+        return channelConfig.getType();
     }
 }

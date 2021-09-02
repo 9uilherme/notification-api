@@ -21,7 +21,7 @@ public class SendNotificationService implements ApplicationRunner {
         findSubscriptionService.execute()
             .forEach(subscription -> {
                 NotifiableService notificationService = notifiableMap.get(subscription.getChannelType());
-                notificationService.send(subscription.getChannel(), "my message");
+                notificationService.send(subscription.getChannelConfig(), "my message");
             });
     }
 

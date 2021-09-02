@@ -10,9 +10,9 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Whatsapp extends Channel {
+public class WebpushConfig extends ChannelConfig {
 
     private String userId;
 
-    private String number;
+    private String browserId;
 }

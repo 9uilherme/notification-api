@@ -18,7 +18,7 @@ import javax.persistence.InheritanceType;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Channel {
+public class ChannelConfig {
 
     @Id
     @GeneratedValue

@@ -1,6 +1,6 @@
 package guidev.factory.services;
 
-import guidev.factory.models.Webpush;
+import guidev.factory.models.WebpushConfig;
 import guidev.factory.repositories.WebpushRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class FindWebpushService {
      * @param channelIds Find Configs
      * @return
      */
-    public List<Webpush> execute(List<Long> channelIds) {
+    public List<WebpushConfig> execute(List<Long> channelIds) {
         return webpushRepository.findByIds(channelIds);
     }
 
