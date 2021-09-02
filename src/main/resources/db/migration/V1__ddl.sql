@@ -1,5 +1,5 @@
 create table if not exists profile (
-                                       name varchar(255),
+                                       type varchar(255),
                                        current boolean,
                                        user_id varchar(255),
                                        id bigint not null,

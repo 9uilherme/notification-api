@@ -27,7 +27,7 @@ public class Profile {
     private Boolean current;
 
     @Enumerated(EnumType.STRING)
-    private ProfileType name;
+    private ProfileType type;
 
     private String userId;
 

@@ -71,7 +71,7 @@
                 <configuration>
                     <url>jdbc:postgresql://localhost:5432/vaktdb</url>
                     <user>postgres</user>
-                    <user>postgres</user>
+                    <password>postgres</password>
                     <locations>
                         <location>db/migration</location>
                     </locations>
