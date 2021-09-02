@@ -2,9 +2,9 @@
 
 ## model
 
-profile type is an enum on Java
+profile type is an enum on Java (We can create a table instead)
 
-channel type is an enum on Java
+channel type is an enum on Java (We can create a table instead)
 
 ![model notifications](https://github.com/9uilherme/notification-api/blob/joined-approach/src/main/resources/model-notifications.png)
 
