@@ -1,6 +1,5 @@
 package guidev.factory.models;
 
-import guidev.factory.enums.ChannelType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,22 +13,14 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Subscription {
+public class Event {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    private Profile profile;
+    private String name;
 
     @ManyToOne
-    private Event event;
-
-    @ManyToOne
-    private ChannelConfig channelConfig;
-
-    public ChannelType getChannelType() {
-        return channelConfig.getType();
-    }
+    private Event parent;
 }
