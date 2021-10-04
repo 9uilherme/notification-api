@@ -54,3 +54,6 @@ create sequence hibernate_sequence start with 1 increment by 1;
 
 drop sequence if exists profile_sequence;
 create sequence profile_sequence start with 1 increment by 1;
+
+drop sequence if exists event_sequence;
+create sequence event_sequence start with 1 increment by 1;
