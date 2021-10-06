@@ -29,7 +29,4 @@ public class Subscription {
     @ManyToOne
     private ChannelConfig channelConfig;
 
-    public ChannelType getChannelType() {
-        return channelConfig.getType();
-    }
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("TEAMS")
 public class MicrosoftTeamsConfig extends ChannelConfig {
 
     private String name;

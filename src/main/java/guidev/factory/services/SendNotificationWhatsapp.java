@@ -1,28 +1,24 @@
 package guidev.factory.services;
 
-import guidev.factory.enums.ChannelType;
 import guidev.factory.interfaces.NotifiableService;
-import guidev.factory.models.ChannelConfig;
 import guidev.factory.models.WhatsappConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import static guidev.factory.enums.ChannelType.WHATSAPP;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SendNotificationWhatsapp implements NotifiableService {
+public class SendNotificationWhatsapp implements NotifiableService<WhatsappConfig> {
 
     @Override
-    public ChannelType getType() {
-        return WHATSAPP;
+    public Class<WhatsappConfig> getType() {
+        return WhatsappConfig.class;
     }
 
     @Override
-    public void send(ChannelConfig channelConfig, String message) {
-        WhatsappConfig whatsappConfig = (WhatsappConfig) channelConfig;
+    public void send(WhatsappConfig channelConfig, String message) {
+        WhatsappConfig whatsappConfig = channelConfig;
         log.info("Notification sent to whatsapp, user Id: {}, number : {}", whatsappConfig.getUserId(), whatsappConfig.getNumber());
 
     }

@@ -14,6 +14,6 @@ public class FindSubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
 
     public List<Subscription> execute() {
-        return subscriptionRepository.findAll();
+        return subscriptionRepository.getAll();
     }
 }
